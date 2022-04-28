@@ -1,7 +1,7 @@
 # 说明
-* 这是一个针对dao治理抽象出来的模块
+* 这是一个针对dao管理员治理vc的模块
 * 这个模块跟substrate原生的议会模块有点类似， 不同点在于具体的治理参数他可以dao内设置
-* 这个模块议案一旦通过，是以dao_id生成的账户名义去执行的。所以dao资产在这个账户中
+* 这个模块议案一旦通过，是以dao_id生成的账户名义去执行的。所以dao资产存储在这个账户中
 # 重要数据结构
 ```commandline
 pub struct Votes<AccountId, BlockNumber> {

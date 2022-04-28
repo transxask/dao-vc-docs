@@ -83,7 +83,18 @@
 
 # DAO管理者群体参与ico
 * 操作任何ico中的方法
-  * 需要dao治理模块获取dao_id生成的账号权限去执行（也就是获取过半管理员的同意）
+  * 代码
+    ```commandline
+    fn join(
+        origin: OriginFor<T>,
+        request_id: u64,
+        proposal: Box<<T as Config<I>>::Proposal>,
+    )
+    ```
+  * 逻辑
+    * 需要dao治理模块获取dao_id生成的账号权限去执行（也就是获取过半管理员的同意）
+    * 必须是申请过投资那个ico才能去操作
+    * 对proposal进行过滤
 # ico后管理
 1. Dao发起人回购销毁代币
   * 代码
@@ -97,6 +108,7 @@
     ```
   * 逻辑
     * 以dao_id转换成的账户身份去执行， 也只有这个才能执行
+    * 对proposal进行过滤
 
 [//]: # (# 手续费来源)
 
