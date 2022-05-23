@@ -34,8 +34,6 @@
         origin: OriginFor<T>,
         dao_id: u64,
         request_id: u64,
-        ico_id: u64,
-        ico_index: u64,
         amount: Balance,
     )
     ```
@@ -47,6 +45,7 @@
     ```commandline
     fn reject_request(
         origin: OriginFor<T>,
+        dao_id: DaoId
         request_id: u64,
     )
     ```
@@ -57,6 +56,7 @@
     ```commandline
     fn approve_request(
         origin: OriginFor<T>,
+        dao_id: DaoId
         request_id: u64,
     )
     ```
@@ -67,10 +67,12 @@
    ```commandline
     fn close_request(
         origin: OriginFor<T>,
+        dao_id: DaoId
         request_id: u64,
    )
     ```
-  * 任何人都可以操作
+   * 逻辑
+     * 任何人都可以操作
 5. 设置转账需要多少手续费
   * 代码
     ```commandline
@@ -80,21 +82,23 @@
         fee: Amount, //dao币可以按照转账金额比例或者固定金额，nft是固定金额
     )
     ```
+  * 逻辑
+    * 需要dao公投获取root权限
 
 # DAO管理者群体参与ico
 * 操作任何ico中的方法
   * 代码
     ```commandline
-    fn join(
+    fn ico_operate(
         origin: OriginFor<T>,
-        request_id: u64,
+        dao_id: DaoId
         proposal: Box<<T as Config<I>>::Proposal>,
     )
     ```
   * 逻辑
     * 需要dao治理模块获取dao_id生成的账号权限去执行（也就是获取过半管理员的同意）
-    * 必须是申请过投资那个ico才能去操作
     * 对proposal进行过滤
+    * 有可能在需要kyc审核的地方通过不了
 # ico后管理
 1. Dao发起人回购销毁代币
   * 代码
@@ -109,9 +113,3 @@
   * 逻辑
     * 以dao_id转换成的账户身份去执行， 也只有这个才能执行
     * 对proposal进行过滤
-
-[//]: # (# 手续费来源)
-
-[//]: # (  * 不管是可变或是不可变资产，转账（或是所有权改变&#41;时候均会扣除一定比例的aUSD，这部分aUSD用于投资)
-
-[//]: # (  *)
