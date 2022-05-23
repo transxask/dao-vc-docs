@@ -27,10 +27,10 @@
   * 必须是该资产的创建人
   > 除了不用额外创建资产，其余跟1步骤相同
 # 管理DAO提案
-1. 管理者申请投项目
+1. 管理者申请解锁资金
   * 代码
     ```commandline
-    fn request_ico(
+    fn request_unreserve(
         origin: OriginFor<T>,
         dao_id: u64,
         request_id: u64,
@@ -40,10 +40,11 @@
   * 逻辑
     * Dao的账户资金必须足够, 并且kico达到最低要求以上
     * 只有管理者才能够提议案
+  > 每个dao交易扣除的u均进入reserve中
 2. 拒绝管理者的申请
   * 代码
     ```commandline
-    fn reject_request(
+    fn reject_unreserve(
         origin: OriginFor<T>,
         dao_id: DaoId
         request_id: u64,
@@ -54,7 +55,7 @@
 3. 同意管理者的申请
   * 代码
     ```commandline
-    fn approve_request(
+    fn approve_unreserve(
         origin: OriginFor<T>,
         dao_id: DaoId
         request_id: u64,
@@ -65,7 +66,7 @@
 4. 关闭提案
    * 代码
    ```commandline
-    fn close_request(
+    fn close(
         origin: OriginFor<T>,
         dao_id: DaoId
         request_id: u64,
@@ -103,7 +104,7 @@
 1. Dao发起人回购销毁代币
   * 代码
     ```commandline
-    fn after_ico(
+    fn burn_operate(
         origin: OriginFor<T>,
         dao_id: u32,
         proposal: Box<<T as Config<I>>::Proposal>,
