@@ -1,31 +1,58 @@
-# 存储
-* Dao id => 类型
-# 发起DAO
-1. 创建一个DAO
-  * 代码
-    ```commandline
-    fn create_dao(
-        origin: OriginFor<T>,
-        class_id_or_asset_id: Id,
-        info: Info,
-    )
-    ```
-  *逻辑
-    * 有选择性的(选择nft或是Dao币)
-    * 创建nft类或是创建可分割资产
-    * Dao的id是自增的u64类型
-    * 为每个Dao创建一个链上账户
-    * 设置每个dao发起公投需要抵押的金额
-2. 为一个已经存在的资产创建DAO
-  * 代码
-    ```commandline
-    fn create_dao_for_asset(
-        origin: OriginFor<T>,
-        class_id_or_asset_id: Id,
-    )
-    ```
-  * 必须是该资产的创建人
-  > 除了不用额外创建资产，其余跟1步骤相同
+[//]: # (# 存储)
+
+[//]: # (* Dao id => 类型)
+
+[//]: # (# 发起DAO)
+
+[//]: # (1. 创建一个DAO)
+
+[//]: # (  * 代码)
+
+[//]: # (    ```commandline)
+
+[//]: # (    fn create_dao&#40;)
+
+[//]: # (        origin: OriginFor<T>,)
+
+[//]: # (        class_id_or_asset_id: Id,)
+
+[//]: # (        info: Info,)
+
+[//]: # (    &#41;)
+
+[//]: # (    ```)
+
+[//]: # (  *逻辑)
+
+[//]: # (    * 有选择性的&#40;选择nft或是Dao币&#41;)
+
+[//]: # (    * 创建nft类或是创建可分割资产)
+
+[//]: # (    * Dao的id是自增的u64类型)
+
+[//]: # (    * 为每个Dao创建一个链上账户)
+
+[//]: # (    * 设置每个dao发起公投需要抵押的金额)
+
+[//]: # (2. 为一个已经存在的资产创建DAO)
+
+[//]: # (  * 代码)
+
+[//]: # (    ```commandline)
+
+[//]: # (    fn create_dao_for_asset&#40;)
+
+[//]: # (        origin: OriginFor<T>,)
+
+[//]: # (        class_id_or_asset_id: Id,)
+
+[//]: # (    &#41;)
+
+[//]: # (    ```)
+
+[//]: # (  * 必须是该资产的创建人)
+
+[//]: # (  > 除了不用额外创建资产，其余跟1步骤相同)
 # 管理DAO提案
 1. 管理者申请解锁资金
   * 代码
