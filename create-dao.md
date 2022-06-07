@@ -3,9 +3,9 @@
 * 目前只能给已经存在的资产创建dao，其他情况后面再加
 ## 重要数据结构
 ```angular2html
-pub enum SecondId<NftId, TokenId> {
-	Nft(NftId), // 哪个类型的nft
-	Currency(TokenId) // 哪个普通资产
+pub enum SecondId<ClassId, TokenId> {
+	NftClassId(ClassId), // 哪个NFT类型
+	FungibleTokenId(TokenId) // 哪个普通代币
 }
 ```
 ## 重要方法

@@ -6,6 +6,20 @@
 # 重要存储
 略
 # 重要数据结构
+```angular2html
+pub enum Vote<TokenId, Balance> {
+	NftTokenId(TokenId), // 哪个NFT token
+	FungibleAmount(Balance) // 多少金额的普通代币
+}
+```
+```angular2html
+pub enum Conviction {
+	X1, // 一倍权重， 锁仓一个月
+	X2, // 2倍权重，锁仓2个月
+	X3, // 3倍权重， 锁仓3个月
+	X6, // 6倍权重， 锁仓6个月
+}
+```
 ```commandline
 pub struct Tally<Balance> {
 	/// The number of aye votes, expressed in terms of post-conviction lock-vote.
