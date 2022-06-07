@@ -16,3 +16,11 @@
         sudo_account: T::AccountId,
     )`
     * 执行者是dao的创建者或者sudo账户
+3. 去掉或是设置创建者sudo权限
+    * 代码 `pub fn close_sudo(
+            origin: OriginFor<T>,
+            dao_id: T::DaoId, // dao id
+            is_close: bool,  // 关闭或者打开
+        )`
+    * 逻辑
+        * sudo权限执行

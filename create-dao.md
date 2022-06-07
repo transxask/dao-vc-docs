@@ -21,3 +21,7 @@ pub enum SecondId<NftId, TokenId> {
     * 逻辑
         * 资产已经存在
         * 自己是资产创建人
+2. dao记录事情（随意给链逼逼一句）
+    * 代码 `pub fn dao_remark(origin: OriginFor<T>, dao_id: T::DaoId, _remark: Vec<u8>)`
+    * 逻辑
+        * dao存在并且是sudo权限
